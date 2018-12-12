@@ -9,6 +9,9 @@ namespace Ui {
 class QAxBrowser;
 }
 
+/*微软 ie 文档
+ * https://docs.microsoft.com/en-us/previous-versions/windows/internet-explorer/ie-developer/platform-apis/aa752084(v=vs.85)
+ */
 class QAxBrowser : public QWidget
 {
 
@@ -46,9 +49,6 @@ public:
 
 
 private slots:
-    /*微软 ie 文档
-     * https://docs.microsoft.com/en-us/previous-versions/windows/internet-explorer/ie-developer/platform-apis/aa752084(v=vs.85)
-        */
     void on_axWidget_NavigateComplete(const QString &URL);
     void on_axWidget_ProgressChange(int Progress, int ProgressMax);
     void on_axWidget_DownloadBegin();
