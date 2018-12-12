@@ -66,7 +66,7 @@ void QAxBrowser::on_axWidget_NavigateComplete(const QString &URL)
 
 void QAxBrowser::on_axWidget_OnQuit()
 {
-    emit quit();
+    emit onQuit();
 }
 
 void QAxBrowser::on_axWidget_ProgressChange(int Progress, int ProgressMax)
@@ -82,4 +82,74 @@ void QAxBrowser::on_axWidget_DownloadBegin()
 void QAxBrowser::on_axWidget_DownloadComplete()
 {
     emit downloadComplete();
+}
+
+void QAxBrowser::on_axWidget_BeforeNavigate(const QString &URL, int Flags, const QString &TargetFrameName, QVariant &PostData, const QString &Headers, bool &Cancel)
+{
+    emit beforeNavigate(URL, Flags, TargetFrameName, PostData, Headers, Cancel);
+}
+
+void QAxBrowser::on_axWidget_CommandStateChange(int Command, bool Enable)
+{
+    emit commandStateChange(Command, Enable);
+}
+
+void QAxBrowser::on_axWidget_DocumentComplete(IDispatch *pDisp, QVariant &URL)
+{
+    emit documentComplete(pDisp, URL);
+}
+
+void QAxBrowser::on_axWidget_NavigateError(IDispatch *pDisp, QVariant &URL, QVariant &Frame, QVariant &StatusCode, bool &Cancel)
+{
+    emit navigateError(pDisp, URL, Frame, StatusCode, Cancel);
+}
+
+void QAxBrowser::on_axWidget_NewProcess(int lCauseFlag, IDispatch *pWB2, bool &Cancel)
+{
+    emit newProcess(lCauseFlag, pWB2, Cancel);
+}
+
+void QAxBrowser::on_axWidget_NewWindow(const QString &URL, int Flags, const QString &TargetFrameName, QVariant &PostData, const QString &Headers, bool &Processed)
+{
+    emit newWindow(URL, Flags, TargetFrameName, PostData, Headers, Processed);
+}
+
+void QAxBrowser::on_axWidget_OnFullScreen(bool FullScreen)
+{
+    emit onFullScreen(FullScreen);
+}
+
+void QAxBrowser::on_axWidget_OnVisible(bool Visible)
+{
+    emit onVisible(Visible);
+}
+
+void QAxBrowser::on_axWidget_PrintTemplateInstantiation(IDispatch *pDisp)
+{
+    emit printTemplateInstantiation(pDisp);
+}
+
+void QAxBrowser::on_axWidget_PrintTemplateTeardown(IDispatch *pDisp)
+{
+    emit printTemplateTeardown(pDisp);
+}
+
+void QAxBrowser::on_axWidget_PropertyChange(const QString &szProperty)
+{
+    emit propertyChange(szProperty);
+}
+
+void QAxBrowser::on_axWidget_StatusTextChange(const QString &Text)
+{
+    emit statusTextChange(Text);
+}
+
+void QAxBrowser::on_axWidget_TitleChange(const QString &Text)
+{
+    emit titleChange(Text);
+}
+
+void QAxBrowser::on_axWidget_windowTitleChanged(const QString &title)
+{
+    emit windowTitleChanged(title);
 }

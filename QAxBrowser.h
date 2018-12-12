@@ -4,7 +4,7 @@
 #include <QWidget>
 #include <QString>
 #include <QDebug>
-
+#include "oaidl.h"
 namespace Ui {
 class QAxBrowser;
 }
@@ -47,19 +47,48 @@ public:
 
 private slots:
     /*微软 ie 文档
-     * https://docs.microsoft.com/en-us/previous-versions/windows/internet-explorer/ie-developer/platform-apis/aa752084(v=vs.85)*/
+     * https://docs.microsoft.com/en-us/previous-versions/windows/internet-explorer/ie-developer/platform-apis/aa752084(v=vs.85)
+        */
     void on_axWidget_NavigateComplete(const QString &URL);
     void on_axWidget_ProgressChange(int Progress, int ProgressMax);
     void on_axWidget_DownloadBegin();
     void on_axWidget_DownloadComplete();
     void on_axWidget_OnQuit();
+    void on_axWidget_BeforeNavigate(const QString &URL, int Flags, const QString &TargetFrameName, QVariant &PostData, const QString &Headers, bool &Cancel);
+    void on_axWidget_CommandStateChange(int Command, bool Enable);
+    void on_axWidget_DocumentComplete(IDispatch *pDisp, QVariant &URL);
+    void on_axWidget_NavigateError(IDispatch *pDisp, QVariant &URL, QVariant &Frame, QVariant &StatusCode, bool &Cancel);
+    void on_axWidget_NewProcess(int lCauseFlag, IDispatch *pWB2, bool &Cancel);
+    void on_axWidget_NewWindow(const QString &URL, int Flags, const QString &TargetFrameName, QVariant &PostData, const QString &Headers, bool &Processed);
+    void on_axWidget_OnFullScreen(bool FullScreen);
+    void on_axWidget_OnVisible(bool Visible);
+    void on_axWidget_PrintTemplateInstantiation(IDispatch *pDisp);
+    void on_axWidget_PrintTemplateTeardown(IDispatch *pDisp);
+    void on_axWidget_PropertyChange(const QString &szProperty);
+    void on_axWidget_StatusTextChange(const QString &Text);
+    void on_axWidget_TitleChange(const QString &Text);
+    void on_axWidget_windowTitleChanged(const QString &title);
 
 signals:
     void navigateComplete(const QString &URL);
     void progressChange(int Progress, int ProgressMax);
     void downloadBegin();
     void downloadComplete();
-    void quit();
+    void onQuit();
+    void beforeNavigate(const QString &URL, int Flags, const QString &TargetFrameName, QVariant &PostData, const QString &Headers, bool &Cancel);
+    void commandStateChange(int Command, bool Enable);
+    void documentComplete(IDispatch *pDisp, QVariant &URL);
+    void navigateError(IDispatch *pDisp, QVariant &URL, QVariant &Frame, QVariant &StatusCode, bool &Cancel);
+    void newProcess(int lCauseFlag, IDispatch *pWB2, bool &Cancel);
+    void newWindow(const QString &URL, int Flags, const QString &TargetFrameName, QVariant &PostData, const QString &Headers, bool &Processed);
+    void onFullScreen(bool FullScreen);
+    void onVisible(bool Visible);
+    void printTemplateInstantiation(IDispatch *pDisp);
+    void printTemplateTeardown(IDispatch *pDisp);
+    void propertyChange(const QString &szProperty);
+    void statusTextChange(const QString &Text);
+    void titleChange(const QString &Text);
+    void windowTitleChanged(const QString &title);
 
 private:
     Ui::QAxBrowser *ui;
