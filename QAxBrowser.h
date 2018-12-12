@@ -47,6 +47,15 @@ public:
     // 设置属性
     void putProperty(QString const& property, QString const& value);
 
+    // 调用指定的ie函数
+    QVariant dynamicCall(const char *name, const QVariant &v1 = QVariant(),
+                                           const QVariant &v2 = QVariant(),
+                                           const QVariant &v3 = QVariant(),
+                                           const QVariant &v4 = QVariant(),
+                                           const QVariant &v5 = QVariant(),
+                                           const QVariant &v6 = QVariant(),
+                                           const QVariant &v7 = QVariant(),
+                                           const QVariant &v8 = QVariant());
 
 private slots:
     void on_axWidget_NavigateComplete(const QString &URL);

@@ -54,6 +54,18 @@ void QAxBrowser::setSlient(bool slient)
         ui->axWidget->setProperty("Silent", "false");
 }
 
+QVariant QAxBrowser::dynamicCall(const char *name, const QVariant &v1,
+                                       const QVariant &v2,
+                                       const QVariant &v3,
+                                       const QVariant &v4,
+                                       const QVariant &v5,
+                                       const QVariant &v6,
+                                       const QVariant &v7,
+                                       const QVariant &v8)
+{
+   return ui->axWidget->dynamicCall(name, v1, v2, v3, v4, v5, v6, v7, v8);
+}
+
 QAxBrowser::~QAxBrowser()
 {
     delete ui;
