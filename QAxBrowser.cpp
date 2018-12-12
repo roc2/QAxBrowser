@@ -23,17 +23,27 @@ void QAxBrowser::goBack()
 
 void QAxBrowser::goForward()
 {
-     ui->axWidget->dynamicCall("GoForward()");
+    ui->axWidget->dynamicCall("GoForward()");
 }
 
 void QAxBrowser::goHome()
 {
-     ui->axWidget->dynamicCall("GoHome()");
+    ui->axWidget->dynamicCall("GoHome()");
 }
 
 void QAxBrowser::goSearch()
 {
-     ui->axWidget->dynamicCall("GoSearch()");
+    ui->axWidget->dynamicCall("GoSearch()");
+}
+
+void QAxBrowser::stop()
+{
+     ui->axWidget->dynamicCall("Stop()");
+}
+
+void QAxBrowser::refresh()
+{
+     ui->axWidget->dynamicCall("Refresh()");
 }
 
 void QAxBrowser::setSlient(bool slient)

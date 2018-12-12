@@ -32,8 +32,18 @@ public:
     // 当前页
     void goSearch();
 
+    // 停止
+    void stop();
+
+    // 刷新
+    void refresh();
+
     // 设置是否屏蔽所有警告
     void setSlient(bool slient);
+
+    // 设置属性
+    void putProperty(QString const& property, QString const& value);
+
 
 private slots:
     /*微软 ie 文档
@@ -45,11 +55,11 @@ private slots:
     void on_axWidget_OnQuit();
 
 signals:
-     void navigateComplete(const QString &URL);
-     void progressChange(int Progress, int ProgressMax);
-     void downloadBegin();
-     void downloadComplete();
-     void quit();
+    void navigateComplete(const QString &URL);
+    void progressChange(int Progress, int ProgressMax);
+    void downloadBegin();
+    void downloadComplete();
+    void quit();
 
 private:
     Ui::QAxBrowser *ui;
